@@ -4,5 +4,26 @@ class Admin::RestaurantsController < ApplicationController
 
 	def index
 		@restaurants = Restaurant.all
-	end	
+	end
+
+	def new
+		@restaurant = Restaurant.new
+	end
+
+	def create
+		@restaurtant = Restaurant.new(restaurtant_params)
+		if @restaurant.save
+			flash[:notice] = "restaurant was successfully created"
+			redirect_to admin_restaurants_path
+		else
+			flash.now[:alert] = "restaurant was failed to create"
+			render :new
+		end
+	end
+
+	private 
+	
+	def restaurtant_params
+		params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
+    end
 end
