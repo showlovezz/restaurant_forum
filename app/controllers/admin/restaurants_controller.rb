@@ -11,7 +11,7 @@ class Admin::RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurtant = Restaurant.new(restaurtant_params)
+		@restaurant = Restaurant.new(restaurant_params)
 		if @restaurant.save
 			flash[:notice] = "restaurant was successfully created"
 			redirect_to admin_restaurants_path
@@ -21,9 +21,13 @@ class Admin::RestaurantsController < ApplicationController
 		end
 	end
 
+	def show
+		@restaurant = Restaurant.find(params[:id])
+	end	
+
 	private 
 	
-	def restaurtant_params
+	def restaurant_params
 		params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
     end
 end
