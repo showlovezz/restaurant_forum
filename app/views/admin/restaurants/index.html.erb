@@ -12,10 +12,10 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
-              <th>Show</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>餐廳名稱</th>
+              <th>檢視</th>
+              <th>編輯</th>
+              <th>刪除</th>
             </tr>
           </thead>
               <tbody>
@@ -24,12 +24,12 @@
                   <th scope="row"><%= restaurant.id %></th>
                   <td><%= restaurant.name %></td>
                   <td>
-                    <%= link_to 'Show', admin_restaurant_path(restaurant) %>
+                    <%= link_to '檢視', admin_restaurant_path(restaurant) %>
                   </td>
                   <td>
-                    <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
+                    <%= link_to '編輯', edit_admin_restaurant_path(restaurant) %>
                   </td>
-                  <td><%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
+                  <td><%= link_to '刪除', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
                   </td>
                 </tr>
                 <% end %>
