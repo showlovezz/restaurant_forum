@@ -37,7 +37,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 
 group :production do
-  gem 'pq'
+  gem 'pg'
 end
 
 group :development, :test do
