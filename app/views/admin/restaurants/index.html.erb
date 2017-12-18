@@ -8,10 +8,11 @@
       </div>
         <br>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>#</th>
+              <th>餐廳分類</th>
               <th>餐廳名稱</th>
               <th>檢視</th>
               <th>編輯</th>
@@ -22,6 +23,7 @@
                 <% @restaurants.each do |restaurant| %>
                 <tr>
                   <th scope="row"><%= restaurant.id %></th>
+                  <td>[<%= restaurant.category.name %>]</td>
                   <td><%= restaurant.name %></td>
                   <td>
                     <%= link_to '檢視', admin_restaurant_path(restaurant) %>
