@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= @friends.count %> friends</h3>
+			</div>
+			<ul class="list-group">
+				<% @friends.each do |friend| %>
+					<li class="list-group-item"><%= link_to friend.name, user_path(friend) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>						

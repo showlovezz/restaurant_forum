@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 	def index
 		@users = User.all
 	end
+			
+	def friend_list
+		@friends = @user.all_friends
+	end	
 	
 	private
 

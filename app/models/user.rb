@@ -28,6 +28,12 @@ class User < ApplicationRecord
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
 
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
+
   def admin?
   	self.role == "admin"
   end
@@ -35,5 +41,14 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+
+  def friend?(user)
+    self.friends.include?(user)
+  end
+  
+  def all_friends
+    all_friends = self.friends + self.inverse_friends
+    return all_friends.uniq
+  end    
   
 end

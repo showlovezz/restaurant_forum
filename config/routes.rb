@@ -26,8 +26,15 @@ Rails.application.routes.draw do
     end
   end
   # 將 :index 加入開放項目
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :friend_list
+    end
+  end
+
   resources :followships, only: [:create, :destroy]
+
+  resources :friendships, only: [:create, :destroy]
 
   resources :categories, only: :show
   root "restaurants#index"

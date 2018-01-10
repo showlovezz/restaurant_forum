@@ -3,7 +3,7 @@ class FollowshipsController < ApplicationController
 		@followship = current_user.followships.build(following_id: params[:following_id])
 
 		if @followship.save
-			flash[:notice] = "Successfully followed"
+			flash[:notice] = "成功追蹤"
 			redirect_back(fallback_location: root_path)
 		else
 			flash[:alert] = @followship.errors.full_messages.to_sentence
@@ -15,7 +15,7 @@ class FollowshipsController < ApplicationController
 		# where 會回傳物件集合(Array)，需要串接可取出單一物件的方法如 first
 		@followship = current_user.followships.where(following_id: params[:id]).first
 		@followship.destroy
-		flash[:alert] = "Followship destroyed"
+		flash[:alert] = "取消追蹤"
 		redirect_back(fallback_location: root_path)
 	end
 		
