@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update]
+	before_action :set_user, only: [:show, :edit, :update, :friend_list]
 
 	def show
 		@commented_restaurants = @user.restaurants.uniq
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 			
 	def friend_list
 		@friends = @user.all_friends
-	end	
+	end		
 	
 	private
 
